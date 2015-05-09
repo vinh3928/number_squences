@@ -20,11 +20,21 @@ var cSquence = [ 1, 2, 4, 16, 256, 65536]
 var dSquence = [ 1, 4, 7, 10, 13, 16]
 var eSquence = [ 1, 3, 9, 27, 81]
 var fSquence = [ 1, 2, 5, 12, 29]
+var gSquence = [ 1, 1, 3, 3, 5, 5]
 
 var randSquence = function(array) {
     var aL = array.length
-    // for dSquence
-    if (array[2] - array[1] === array[1] - array[0]) {
+    // for gSquence
+    if (array[aL -1] === array[aL -2] || array[aL -2] === array[aL -3]) {
+        if (array[aL -1] === array[aL -2]) {
+        array.push(array[aL-1] + (array[aL -2] - array[aL -3]))
+        return array
+      } else {
+        array.push(array[aL -1])
+        return array
+      }
+    } // for dSquence
+      else if (array[2] - array[1] === array[1] - array[0]) {
       array.push(array[1] - array[0] + array[aL - 1])
       return array
     // for bSquence and eSquence
@@ -39,7 +49,6 @@ var randSquence = function(array) {
     } else if (array[aL - 1] - array[aL -2] === array[aL - 3] - array[aL -4]) {
       array.push(array[aL - 2] - array[aL -3] + array[aL -1])
       return array
-    // for fSquence
     } else if (array[aL - 1] - array[aL -2] - array[aL -3] === array[aL -2]) {
       array.push(array[aL -1] + array[aL -1] + array[aL -2])
       return array
@@ -48,5 +57,5 @@ var randSquence = function(array) {
     }
 }
 
-console.log(randSquence(fSquence));
+console.log(randSquence(gSquence));
 
