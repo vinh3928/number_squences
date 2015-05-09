@@ -1,44 +1,42 @@
-var primeRange = 100
+var prime = 17
 var primeArray = []
-var compareArrayOrigin = []
-var alogrithmArray = []
+var compareArray = []
+var compare2Array = []
+var compare3Array = []
+var table = []
 
-var primeDetective = function(primeNumb) {
-  
-  var i = 0, j = 2, k = 0, l = 0
- //creating the array range of prime numbers to search in
-  while (i <= primeRange) {
-    primeArray[i] = i
- //initalizing comparison origin array as a placeholder
-    compareArrayOrigin[i] = 2 * i + 1
- //initalizing alogrithm array
-    alogrithmArray[i] = i
-    i ++
-  }
-
-while (j <= 10) {
-
-  while (k <= primeRange) {
-    alogrithmArray[k] = 2 * compareArrayOrigin[k]
- // this loop removes numbers of 2n + 1 from primeArray
-    while (l <= primeRange) {
-      if (alogrithmArray[k] === primeArray[l]) {
-        primeArray[l] = null;
-      } else {
-
-      }
-      l ++;
-    }
-    alogrithmArray[k] = k
-    k ++;
-    l = 0
-  }
- j ++
- k = 0
+isPrime = function(n) {
+   if (isNaN(n) || !isFinite(n) || n%1 || n<2) return false; 
+    if (n==leastFactor(n)) return true;
+     return false;
 }
 
-  return primeArray
+// leastFactor(n)
+// // returns the smallest prime that divides n
+// //     NaN if n is NaN or Infinity
+// //      0  if n=0
+// //      1  if n=1, n=-1, or n is not an integer
+
+leastFactor = function(n){
+  if (isNaN(n) || !isFinite(n)) return NaN;  
+  if (n==0) return 0;  
+  if (n%1 || n*n<2) return 1;
+  if (n%2==0) return 2;  
+  if (n%3==0) return 3;  
+  if (n%5==0) return 5;  
+var m = Math.sqrt(n);
+  for (var i=7;i<=m;i+=30) {
+    if (n%i==0)      return i;
+    if (n%(i+4)==0)  return i+4;
+    if (n%(i+6)==0)  return i+6;
+    if (n%(i+10)==0) return i+10;
+    if (n%(i+12)==0) return i+12;
+    if (n%(i+16)==0) return i+16;
+    if (n%(i+22)==0) return i+22;
+    if (n%(i+24)==0) return i+24;
+  }
+return n;
 }
 
-console.log(primeDetective())
+console.log(isPrime(prime))
 
