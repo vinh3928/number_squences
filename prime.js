@@ -1,9 +1,3 @@
-var prime = 17
-var primeArray = []
-var compareArray = []
-var compare2Array = []
-var compare3Array = []
-var table = []
 
 isPrime = function(n) {
    if (isNaN(n) || !isFinite(n) || n%1 || n<2) return false; 
@@ -37,6 +31,6 @@ var m = Math.sqrt(n);
   }
 return n;
 }
-
+var prime = 91;
 console.log(isPrime(prime))
 
